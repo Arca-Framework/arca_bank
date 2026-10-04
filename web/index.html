@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ================= BANK (branches) ================= -->
+    <div id="bank" class="hidden">
+        <aside class="side">
+            <div class="logo"><span class="mark">f</span><div><b>fleeca</b><small>Banking</small></div></div>
+            <div class="me">
+                <strong id="me-name">Citizen</strong>
+                <span>Citizen ID <code id="me-cid">-</code></span>
+                <span class="cash"><i class="fa-solid fa-money-bill-wave"></i> Cash <b id="me-cash">$0</b></span>
+            </div>
+            <div class="list-title">Accounts</div>
+            <div id="accounts" class="accounts"></div>
+            <button id="open-account" class="ghost-btn"><i class="fa-solid fa-plus"></i> Open an account</button>
+            <button id="bank-close" class="close-btn"><i class="fa-solid fa-xmark"></i> Close <kbd>Esc</kbd></button>
+        </aside>
+
+        <main class="main">
+            <div class="acc-head">
+                <div>
+                    <span id="acc-kind" class="pill">Personal</span>
+                    <h1 id="acc-label">Personal account</h1>
+                    <span class="acc-num">Account <code id="acc-number">-</code> <span id="acc-card"></span></span>
+                </div>
+                <div class="bal"><small>Balance</small><b id="acc-balance">$0</b></div>
+            </div>
+
+            <div class="actions">
+                <button data-do="deposit"><i class="fa-solid fa-arrow-down"></i>Deposit</button>
+                <button data-do="withdraw"><i class="fa-solid fa-arrow-up"></i>Withdraw</button>
+                <button data-do="transfer"><i class="fa-solid fa-right-left"></i>Transfer</button>
+                <button data-do="pin"><i class="fa-solid fa-credit-card"></i><span id="pin-label">Card PIN</span></button>
+            </div>
+
+            <div class="tabs">
+                <button data-tab="activity" class="on">Activity</button>
+                <button data-tab="manage" id="tab-manage">Manage</button>
+            </div>
+
+            <section data-pane="activity" class="pane on"><div id="tx" class="tx"></div></section>
+            <section data-pane="manage" class="pane"><div id="manage"></div></section>
+        </main>
+    </div>
+
+    <!-- ================= ATM ================= -->
+    <div id="atm" class="hidden">
+        <div class="atm-shell">
+            <div class="atm-top"><span class="mark">f</span><b>fleeca</b><span class="atm-sub">ATM</span><button id="atm-close" class="x"><i class="fa-solid fa-xmark"></i></button></div>
+            <div class="atm-screen" id="atm-screen"></div>
+        </div>
+    </div>
+
+    <!-- dialog + toast shared by both -->
+    <div id="modal" class="hidden"><form id="modal-box"><h3 id="modal-title"></h3><div id="modal-body"></div>
+        <div class="modal-actions"><button type="button" id="modal-cancel" class="ghost-btn">Cancel</button><button type="submit" class="primary" id="modal-ok">Confirm</button></div></form></div>
+    <div id="toast" class="hidden"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
